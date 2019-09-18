@@ -198,14 +198,10 @@
   ],
   'conditions': [
     [ 'build_linux', {
-      'dependencies': [
-        '<(DEPTH)/linux_glibc_wraps.gyp:linux_glibc_wraps',
-      ],
       'library_dirs': [
         '<(qt_loc)/plugins/platforminputcontexts',
       ],
       'libraries': [
-        '<(PRODUCT_DIR)/obj.target/liblinux_glibc_wraps.a',
         '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
         '<@(qt_libs_release)',
         '<(linux_lib_ssl)',

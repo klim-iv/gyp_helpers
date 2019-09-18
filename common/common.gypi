@@ -49,7 +49,8 @@
       'official_build_target%': '',
       'build_standard_win%': 'c++17',
       'libs_loc%': '<(DEPTH)/../../../Libraries',
-      'submodules_loc%': '<(DEPTH)/../ThirdParty',
+      'submodules_loc%': '<(DEPTH)/..',
+      'third_party_loc%': '<(DEPTH)/../ThirdParty',
     },
     'build_os%': '<(build_os)',
     'build_win%': '<(build_win)',
@@ -59,6 +60,7 @@
     'build_standard_win%': '<(build_standard_win)',
     'libs_loc%': '<(libs_loc)',
     'submodules_loc%': '<(submodules_loc)',
+    'third_party_loc%': '<(third_party_loc)',
 
     # GYP does not support per-configuration libraries :(
     # So they will be emulated through additional link flags,
