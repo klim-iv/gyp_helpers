@@ -201,11 +201,20 @@
       'library_dirs': [
         '<(qt_loc)/plugins/platforminputcontexts',
       ],
+      'dependencies': [
+        '<(DEPTH)/helpers/platform/linux/linux_glibc_wraps.gyp:linux_glibc_wraps',
+      ],
       'libraries': [
+        '-lcomposeplatforminputcontextplugin',
+        '-libusplatforminputcontextplugin',
+        '-lfcitxplatforminputcontextplugin',
+        '-lhimeplatforminputcontextplugin',
+        '-lnimfplatforminputcontextplugin',
         '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
         '<@(qt_libs_release)',
-        '<(linux_lib_ssl)',
-        '<(linux_lib_crypto)',
+        '<(PRODUCT_DIR)/obj.target/helpers/platform/linux/liblinux_glibc_wraps.a',
+        #'<(linux_lib_ssl)', # added in lib_ton
+        #'<(linux_lib_crypto)', # added in lib_ton
         '<!@(python -c "for s in \'<(linux_lib_icu)\'.split(\' \'): print(s)")',
         '-lxcb',
         '-lX11',

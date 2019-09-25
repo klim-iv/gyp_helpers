@@ -6,7 +6,7 @@
 
 {
   'cmake_precompiled_header': '<(pch_header)',
-  'cmake_precompiled_header_script': '<(DEPTH)/PrecompiledHeader.cmake',
+  'cmake_precompiled_header_script': '<(DEPTH)/helpers/PrecompiledHeader.cmake',
   'msvs_precompiled_source': '<(pch_source)',
   'msvs_precompiled_header': '<(pch_header)',
   'xcode_settings': {
