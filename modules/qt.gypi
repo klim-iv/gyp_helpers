@@ -14,18 +14,24 @@
               [ 'build_macold', {
                 'qt_version%': '5.3.2',
               }, {
-                'qt_version%': '5.6.2',
+                'qt_version%': '5.12.5',
               }]
             ],
           },
           'qt_libs': [
             'qwebp',
+            'qgif',
+            'qjpeg',
             'Qt5PrintSupport',
-            'Qt5PlatformSupport',
+            'Qt5AccessibilitySupport',
+            'Qt5FontDatabaseSupport',
+            'Qt5EventDispatcherSupport',
+            'Qt5ThemeSupport',
             'Qt5Network',
             'Qt5Widgets',
             'Qt5Gui',
-            'qtharfbuzzng',
+            'qtharfbuzz',
+            'qtlibpng',
           ],
           'qt_version%': '<(qt_version)',
           'linux_path_qt%': '/usr/local/desktop-app/Qt-<(qt_version)',
@@ -40,10 +46,11 @@
             'qt_libs': [
               '<@(qt_libs)',
               'Qt5Core',
+              'Qt5WindowsUIAutomationSupport',
               'qtmain',
               'qwindows',
               'qtfreetype',
-              'qtpcre',
+              'qtpcre2',
             ],
           }],
           [ 'build_mac', {
@@ -53,6 +60,8 @@
             'qt_libs': [
               '<@(qt_libs)',
               'Qt5Core',
+              'Qt5GraphicsSupport',
+              'Qt5ClipboardSupport',
               'qgenericbearer',
               'qcocoa',
             ],
@@ -62,7 +71,7 @@
               '<@(qt_libs)',
               'Qt5Core',
               'qtfreetype',
-              'qtpcre',
+              'qtpcre2',
             ],
           }],
           [ 'build_linux', {
@@ -72,21 +81,20 @@
             'qt_libs': [
               'qxcb',
               'Qt5XcbQpa',
+              'Qt5ServiceSupport',
+              'Qt5EdidSupport',
               'qconnmanbearer',
               'qgenericbearer',
               'qnmbearer',
               '<@(qt_libs)',
               'Qt5DBus',
               'Qt5Core',
-              'qtpcre',
-              'Xi',
-              'Xext',
-              'Xfixes',
+              'qtpcre2',
               'SM',
               'ICE',
               'fontconfig',
-              'expat',
               'freetype',
+              'expat',
               'z',
               'xcb-shm',
               'xcb-xfixes',
@@ -111,7 +119,7 @@
     'qt_version%': '<(qt_version)',
     'conditions': [
       [ 'build_win', {
-        'qt_loc': '<(DEPTH)/../../../Libraries/qt<(qt_version_loc)/qtbase',
+        'qt_loc': '<(libs_loc)/Qt-<(qt_version)',
       }, {
         'qt_loc': '<(qt_loc_unix)',
       }],
@@ -123,8 +131,8 @@
     'qt_moc_list_sources_arg': '--moc-prefix SHARED_INTERMEDIATE_DIR/<(_target_name)/moc/moc_',
 
     'linux_path_xkbcommon%': '/usr/local',
-    'linux_lib_ssl%': '/usr/local/ssl/lib/libssl.a',
-    'linux_lib_crypto%': '/usr/local/ssl/lib/libcrypto.a',
+    'linux_lib_ssl%': '/usr/local/desktop-app/openssl-1.1.1/lib/libssl.a',
+    'linux_lib_crypto%': '/usr/local/desktop-app/openssl-1.1.1/lib/libcrypto.a',
     'linux_lib_icu%': 'libicutu.a libicui18n.a libicuuc.a libicudata.a',
   },
 
@@ -136,6 +144,11 @@
             'VCLinkerTool': {
               'AdditionalDependencies': [
                 '<@(qt_libs_debug)',
+                'Netapi32.lib',
+                'Userenv.lib',
+                'Version.lib',
+                'Dwmapi.lib',
+                'Wtsapi32.lib',
               ],
             },
           },
@@ -157,6 +170,11 @@
             'VCLinkerTool': {
               'AdditionalDependencies': [
                 '<@(qt_libs_release)',
+                'Netapi32.lib',
+                'Userenv.lib',
+                'Version.lib',
+                'Dwmapi.lib',
+                'Wtsapi32.lib',
               ],
             },
           },
@@ -210,8 +228,8 @@
         '-lfcitxplatforminputcontextplugin',
         '-lhimeplatforminputcontextplugin',
         '-lnimfplatforminputcontextplugin',
-        '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
         '<@(qt_libs_release)',
+        '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
         '<(PRODUCT_DIR)/obj.target/helpers/platform/linux/liblinux_glibc_wraps.a',
         #'<(linux_lib_ssl)', # added in lib_ton
         #'<(linux_lib_crypto)', # added in lib_ton

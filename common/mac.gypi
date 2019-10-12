@@ -14,6 +14,8 @@
           'CoreServices',
           'CoreText',
           'CoreGraphics',
+          'IOSurface',
+          'Metal',
           'OpenGL',
           'AudioUnit',
           'ApplicationServices',

@@ -41,6 +41,12 @@
         'build_mac%': '<(build_mac)',
         'build_linux%': '<(build_linux)',
       },
+      'conditions': [[ 'build_mac', {
+        'libs_loc%': '<(DEPTH)/../../../Libraries/macos',
+      }, {
+        'libs_loc%': '<(DEPTH)/../../../Libraries',
+      }]],
+
       'build_os%': '<(build_os)',
       'build_win%': '<(build_win)',
       'build_mac%': '<(build_mac)',
@@ -48,7 +54,6 @@
 
       'official_build_target%': '',
       'build_standard_win%': 'c++17',
-      'libs_loc%': '<(DEPTH)/../../../Libraries',
       'submodules_loc%': '<(DEPTH)/..',
       'third_party_loc%': '<(DEPTH)/../ThirdParty',
     },
@@ -79,7 +84,7 @@
         'mac_target%': '10.6',
         'build_macold': 1,
       }, {
-        'mac_target%': '10.8',
+        'mac_target%': '10.12',
         'build_macold': 0,
       }],
       [ '"<(official_build_target)" == "macstore"', {

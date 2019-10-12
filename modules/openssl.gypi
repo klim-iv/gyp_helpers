@@ -8,25 +8,29 @@
   'conditions': [
     [ 'build_win', {
       'libraries': [
-        '-llibeay32',
-        '-lssleay32',
+        '-llibcrypto',
+        '-llibssl',
+        '-lWs2_32',
+        '-lGdi32',
+        '-lAdvapi32',
         '-lCrypt32',
+        '-lUser32',
       ],
       'configurations': {
         'Debug': {
           'include_dirs': [
-            '<(libs_loc)/openssl/inc32',
+            '<(libs_loc)/openssl_1_1_1/include',
           ],
           'library_dirs': [
-            '<(libs_loc)/openssl/out32.dbg',
+            '<(libs_loc)/openssl_1_1_1/out32.dbg',
           ],
         },
         'Release': {
           'include_dirs': [
-            '<(libs_loc)/openssl/inc32',
+            '<(libs_loc)/openssl_1_1_1/include',
           ],
           'library_dirs': [
-            '<(libs_loc)/openssl/out32',
+            '<(libs_loc)/openssl_1_1_1/out32',
           ],
         },
       },
@@ -43,12 +47,16 @@
     }], [ 'build_mac', {
       'xcode_settings': {
         'OTHER_LDFLAGS': [
-          '<(libs_loc)/openssl/libssl.a',
-          '<(libs_loc)/openssl/libcrypto.a',
+          '<(libs_loc)/openssl_1_1_1/libssl.a',
+          '<(libs_loc)/openssl_1_1_1/libcrypto.a',
         ],
       },
       'include_dirs': [
-        '<(libs_loc)/openssl/include',
+        '<(libs_loc)/openssl_1_1_1/include',
+      ],
+    }], [ 'build_linux', {
+      'include_dirs': [
+        '/usr/local/desktop-app/openssl-1.1.1/include',
       ],
     }],
   ],
