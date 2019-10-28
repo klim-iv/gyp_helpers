@@ -55,6 +55,7 @@
       'official_build_target%': '',
       'build_standard_win%': 'c++17',
       'submodules_loc%': '<(DEPTH)/..',
+      'private_loc%': '<(DEPTH)/../../../DesktopPrivate',
       'third_party_loc%': '<(DEPTH)/../ThirdParty',
     },
     'build_os%': '<(build_os)',
@@ -65,6 +66,7 @@
     'build_standard_win%': '<(build_standard_win)',
     'libs_loc%': '<(libs_loc)',
     'submodules_loc%': '<(submodules_loc)',
+    'private_loc%': '<(private_loc)',
     'third_party_loc%': '<(third_party_loc)',
 
     # GYP does not support per-configuration libraries :(
