@@ -56,8 +56,8 @@
             'Q_OS_LINUX64',
           ],
           'conditions': [
-            [ '"<(official_build_target)" != "" and "<(official_build_target)" != "linux"', {
-              'sources': [ '__Wrong_Official_Build_Target_<(official_build_target)_' ],
+            [ '"<(special_build_target)" != "" and "<(special_build_target)" != "linux"', {
+              'sources': [ '__Wrong_Special_Build_Target_<(special_build_target)_' ],
             }],
           ],
         }, {
@@ -65,8 +65,8 @@
             'Q_OS_LINUX32',
           ],
           'conditions': [
-            [ '"<(official_build_target)" != "" and "<(official_build_target)" != "linux32"', {
-              'sources': [ '__Wrong_Official_Build_Target_<(official_build_target)_' ],
+            [ '"<(special_build_target)" != "" and "<(special_build_target)" != "linux32"', {
+              'sources': [ '__Wrong_Special_Build_Target_<(special_build_target)_' ],
             }],
           ],
         }], [ '"<!(uname -p)" == "x86_64"', {

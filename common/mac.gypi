@@ -78,8 +78,8 @@
         },
       },
       'conditions': [
-        [ '"<(official_build_target)" != "" and "<(official_build_target)" != "mac" and "<(official_build_target)" != "mac32" and "<(official_build_target)" != "macstore"', {
-          'sources': [ '__Wrong_Official_Build_Target__' ],
+        [ '"<(special_build_target)" != "" and "<(special_build_target)" != "mac" and "<(special_build_target)" != "mac32" and "<(special_build_target)" != "osx" and "<(special_build_target)" != "macstore"', {
+          'sources': [ '__Wrong_Special_Build_Target__' ],
         }],
       ],
     }],

@@ -52,7 +52,7 @@
       'build_mac%': '<(build_mac)',
       'build_linux%': '<(build_linux)',
 
-      'official_build_target%': '',
+      'special_build_target%': '',
       'build_standard_win%': 'c++17',
       'submodules_loc%': '<(DEPTH)/..',
       'private_loc%': '<(DEPTH)/../../../DesktopPrivate',
@@ -62,7 +62,7 @@
     'build_win%': '<(build_win)',
     'build_mac%': '<(build_mac)',
     'build_linux%': '<(build_linux)',
-    'official_build_target%': '<(official_build_target)',
+    'special_build_target%': '<(special_build_target)',
     'build_standard_win%': '<(build_standard_win)',
     'libs_loc%': '<(libs_loc)',
     'submodules_loc%': '<(submodules_loc)',
@@ -82,19 +82,27 @@
         'ld_lib_postfix': '',
         'exe_ext': '',
       }],
-      [ '"<(official_build_target)" == "mac32"', {
+      [ '"<(special_build_target)" == "mac32"', {
         'mac_target%': '10.6',
         'build_macold': 1,
+        'build_osx': 0,
       }, {
-        'mac_target%': '10.12',
-        'build_macold': 0,
+        'conditions': [[ '"<(special_build_target)" == "osx"', {
+          'mac_target%': '10.10',
+          'build_macold': 0,
+          'build_osx': 1,
+        }, {
+          'mac_target%': '10.12',
+          'build_macold': 0,
+          'build_osx': 0,
+        }]],
       }],
-      [ '"<(official_build_target)" == "macstore"', {
+      [ '"<(special_build_target)" == "macstore"', {
         'build_macstore': 1,
       }, {
         'build_macstore': 0,
       }],
-      [ '"<(official_build_target)" == "uwp"', {
+      [ '"<(special_build_target)" == "uwp"', {
         'build_uwp': 1,
       }, {
         'build_uwp': 0,
@@ -105,7 +113,6 @@
     'exe_ext': '<(exe_ext)',
 
     'library%': 'static_library',
-
   },
 
   'defines': [

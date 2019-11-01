@@ -109,8 +109,8 @@
         },
       },
       'conditions': [
-        [ '"<(official_build_target)" != "" and "<(official_build_target)" != "win" and "<(official_build_target)" != "uwp"', {
-          'sources': [ '__Wrong_Official_Build_Target__' ],
+        [ '"<(special_build_target)" != "" and "<(special_build_target)" != "win" and "<(special_build_target)" != "uwp"', {
+          'sources': [ '__Wrong_Special_Build_Target__' ],
         }],
       ],
     }],
