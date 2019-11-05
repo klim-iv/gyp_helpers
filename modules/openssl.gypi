@@ -34,16 +34,6 @@
           ],
         },
       },
-    }], [ 'build_osx', {
-      'xcode_settings': {
-        'OTHER_LDFLAGS': [
-          '<(libs_loc)/openssl/libssl.a',
-          '<(libs_loc)/openssl/libcrypto.a',
-        ],
-      },
-      'include_dirs': [
-        '<(libs_loc)/openssl/include',
-      ],
     }], [ 'build_mac', {
       'conditions': [[ 'not build_osx', {
         'xcode_settings': {
