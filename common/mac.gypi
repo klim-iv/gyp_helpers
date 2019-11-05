@@ -14,6 +14,7 @@
           'CoreServices',
           'CoreText',
           'CoreGraphics',
+          'CoreMedia',
           'IOSurface',
           'Metal',
           'OpenGL',
@@ -25,6 +26,9 @@
           'SystemConfiguration',
           'Carbon',
           'AudioToolbox',
+          'VideoToolbox',
+          'VideoDecodeAcceleration',
+          'AVFoundation',
           'CoreAudio',
           'QuartzCore',
           'AppKit',
@@ -68,6 +72,8 @@
         'GCC_OPTIMIZATION_LEVEL': '0',
         'GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS': 'NO', # temp for range-v3
         'ALWAYS_SEARCH_USER_PATHS': 'NO',
+        'CLANG_CXX_LIBRARY': 'libc++',
+        'CLANG_ENABLE_OBJC_WEAK': 'YES',
       },
       'configurations': {
         'Debug': {
@@ -82,31 +88,6 @@
           'sources': [ '__Wrong_Special_Build_Target__' ],
         }],
       ],
-    }],
-    [ 'build_macold', {
-      'xcode_settings': {
-        'OTHER_CPLUSPLUSFLAGS': [
-          '-Wno-inconsistent-missing-override',
-        ],
-        'OTHER_LDFLAGS': [
-          '-w', # Suppress 'libstdc++ is deprecated' warning.
-        ],
-      },
-      'defines': [
-        'OS_MAC_OLD',
-        'RANGES_CXX_THREAD_LOCAL=0',
-      ],
-    }, {
-      'xcode_settings': {
-        'CLANG_CXX_LIBRARY': 'libc++',
-        'CLANG_ENABLE_OBJC_WEAK': 'YES',
-        'OTHER_LDFLAGS': [
-          '-framework', 'VideoToolbox',
-          '-framework', 'VideoDecodeAcceleration',
-          '-framework', 'AVFoundation',
-          '-framework', 'CoreMedia',
-        ],
-      },
     }],
     [ 'build_macstore', {
       'defines': [

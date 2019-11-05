@@ -34,26 +34,38 @@
           ],
         },
       },
-    }], [ 'build_macold', {
+    }], [ 'build_osx', {
       'xcode_settings': {
         'OTHER_LDFLAGS': [
-          '<(libs_loc)/macold/openssl/libssl.a',
-          '<(libs_loc)/macold/openssl/libcrypto.a',
+          '<(libs_loc)/openssl/libssl.a',
+          '<(libs_loc)/openssl/libcrypto.a',
         ],
       },
       'include_dirs': [
-        '<(libs_loc)/macold/openssl/include',
+        '<(libs_loc)/openssl/include',
       ],
     }], [ 'build_mac', {
-      'xcode_settings': {
-        'OTHER_LDFLAGS': [
-          '<(libs_loc)/openssl_1_1_1/libssl.a',
-          '<(libs_loc)/openssl_1_1_1/libcrypto.a',
+      'conditions': [[ 'not build_osx', {
+        'xcode_settings': {
+          'OTHER_LDFLAGS': [
+            '<(libs_loc)/openssl_1_1_1/libssl.a',
+            '<(libs_loc)/openssl_1_1_1/libcrypto.a',
+          ],
+        },
+        'include_dirs': [
+          '<(libs_loc)/openssl_1_1_1/include',
         ],
-      },
-      'include_dirs': [
-        '<(libs_loc)/openssl_1_1_1/include',
-      ],
+      }, {
+        'xcode_settings': {
+          'OTHER_LDFLAGS': [
+            '<(libs_loc)/openssl/libssl.a',
+            '<(libs_loc)/openssl/libcrypto.a',
+          ],
+        },
+        'include_dirs': [
+          '<(libs_loc)/openssl/include',
+        ],
+      }]],
     }], [ 'build_linux', {
       'include_dirs': [
         '/usr/local/desktop-app/openssl-1.1.1/include',

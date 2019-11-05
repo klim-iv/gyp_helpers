@@ -11,14 +11,14 @@
         'variables': {
           'variables': {
             'conditions': [
-              [ 'build_macold', {
-                'qt_version%': '5.3.2',
+              [ 'build_osx', {
+                'qt_version%': '5.6.2',
               }, {
                 'qt_version%': '5.12.5',
               }]
             ],
           },
-          'qt_libs': [
+          'qt_libs_5_12_5': [
             'qwebp',
             'qgif',
             'qjpeg',
@@ -44,7 +44,7 @@
             'qt_lib_debug_postfix': 'd<(ld_lib_postfix)',
             'qt_lib_release_postfix': '<(ld_lib_postfix)',
             'qt_libs': [
-              '<@(qt_libs)',
+              '<@(qt_libs_5_12_5)',
               'Qt5Core',
               'Qt5WindowsUIAutomationSupport',
               'qtmain',
@@ -57,21 +57,33 @@
             'qt_lib_prefix': '<(ld_lib_prefix)',
             'qt_lib_debug_postfix': '_debug<(ld_lib_postfix)',
             'qt_lib_release_postfix': '<(ld_lib_postfix)',
+          }],
+          [ 'build_mac and not build_osx', {
             'qt_libs': [
-              '<@(qt_libs)',
+              '<@(qt_libs_5_12_5)',
               'Qt5Core',
               'Qt5GraphicsSupport',
               'Qt5ClipboardSupport',
               'qgenericbearer',
+              'qtfreetype',
+              'qtpcre2',
               'qcocoa',
             ],
           }],
-          [ 'build_mac and not build_macold', {
+          [ 'build_osx', {
             'qt_libs': [
-              '<@(qt_libs)',
+              'qwebp',
+              'Qt5PrintSupport',
+              'Qt5PlatformSupport',
+              'Qt5Network',
+              'Qt5Widgets',
+              'Qt5Gui',
               'Qt5Core',
+              'qtharfbuzzng',
+              'qgenericbearer',
               'qtfreetype',
-              'qtpcre2',
+              'qtpcre',
+              'qcocoa',
             ],
           }],
           [ 'build_linux', {
@@ -86,7 +98,7 @@
               'qconnmanbearer',
               'qgenericbearer',
               'qnmbearer',
-              '<@(qt_libs)',
+              '<@(qt_libs_5_12_5)',
               'Qt5DBus',
               'Qt5Core',
               'qtpcre2',

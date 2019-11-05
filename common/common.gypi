@@ -40,8 +40,24 @@
         'build_win%': '<(build_win)',
         'build_mac%': '<(build_mac)',
         'build_linux%': '<(build_linux)',
+
+        'conditions': [[ '"<(special_build_target)" == "osx"', {
+          'build_macold': 0,
+          'build_osx': 1,
+        }, {
+          'build_macold': 0,
+          'build_osx': 0,
+        }], [ '"<(special_build_target)" == "macstore"', {
+          'build_macstore': 1,
+        }, {
+          'build_macstore': 0,
+        }], [ '"<(special_build_target)" == "uwp"', {
+          'build_uwp': 1,
+        }, {
+          'build_uwp': 0,
+        }]],
       },
-      'conditions': [[ 'build_mac', {
+      'conditions': [[ 'build_mac and not build_osx', {
         'libs_loc%': '<(DEPTH)/../../../Libraries/macos',
       }, {
         'libs_loc%': '<(DEPTH)/../../../Libraries',
@@ -49,7 +65,11 @@
 
       'build_os%': '<(build_os)',
       'build_win%': '<(build_win)',
+      'build_uwp%': '<(build_uwp)',
       'build_mac%': '<(build_mac)',
+      'build_macold%': '<(build_macold)',
+      'build_macstore%': '<(build_macstore)',
+      'build_osx%': '<(build_osx)',
       'build_linux%': '<(build_linux)',
 
       'special_build_target%': '',
@@ -82,20 +102,14 @@
         'ld_lib_postfix': '',
         'exe_ext': '',
       }],
-      [ '"<(special_build_target)" == "mac32"', {
-        'mac_target%': '10.6',
-        'build_macold': 1,
-        'build_osx': 0,
+      [ '"<(special_build_target)" == "osx"', {
+        'mac_target%': '10.10',
+        'build_macold': 0,
+        'build_osx': 1,
       }, {
-        'conditions': [[ '"<(special_build_target)" == "osx"', {
-          'mac_target%': '10.10',
-          'build_macold': 0,
-          'build_osx': 1,
-        }, {
-          'mac_target%': '10.12',
-          'build_macold': 0,
-          'build_osx': 0,
-        }]],
+        'mac_target%': '10.12',
+        'build_macold': 0,
+        'build_osx': 0,
       }],
       [ '"<(special_build_target)" == "macstore"', {
         'build_macstore': 1,
