@@ -242,6 +242,7 @@
         '-lnimfplatforminputcontextplugin',
         '<@(qt_libs_release)',
         '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
+        '<(linux_path_xkbcommon)/lib/libxkbcommon-x11.a',
         '<(PRODUCT_DIR)/obj.target/helpers/platform/linux/liblinux_glibc_wraps.a',
         #'<(linux_lib_ssl)', # added in lib_ton
         #'<(linux_lib_crypto)', # added in lib_ton
