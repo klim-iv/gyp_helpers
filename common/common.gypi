@@ -40,6 +40,7 @@
         'build_win%': '<(build_win)',
         'build_mac%': '<(build_mac)',
         'build_linux%': '<(build_linux)',
+        'special_build_target%': '',
 
         'conditions': [[ '"<(special_build_target)" == "osx"', {
           'build_macold': 0,
@@ -72,7 +73,7 @@
       'build_osx%': '<(build_osx)',
       'build_linux%': '<(build_linux)',
 
-      'special_build_target%': '',
+      'special_build_target%': '<(special_build_target)',
       'ci_build%': '',
       'build_standard_win%': 'c++17',
       'submodules_loc%': '<(DEPTH)/..',
