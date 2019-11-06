@@ -73,6 +73,7 @@
       'build_linux%': '<(build_linux)',
 
       'special_build_target%': '',
+      'ci_build%': '',
       'build_standard_win%': 'c++17',
       'submodules_loc%': '<(DEPTH)/..',
       'private_loc%': '<(DEPTH)/../../../DesktopPrivate',
@@ -83,6 +84,7 @@
     'build_mac%': '<(build_mac)',
     'build_linux%': '<(build_linux)',
     'special_build_target%': '<(special_build_target)',
+    'ci_build%': '<(ci_build)',
     'build_standard_win%': '<(build_standard_win)',
     'libs_loc%': '<(libs_loc)',
     'submodules_loc%': '<(submodules_loc)',

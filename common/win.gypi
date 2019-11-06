@@ -112,6 +112,15 @@
         [ '"<(special_build_target)" != "" and "<(special_build_target)" != "win" and "<(special_build_target)" != "uwp"', {
           'sources': [ '__Wrong_Special_Build_Target__' ],
         }],
+        [ '"<(ci_build)" == "1"', {
+          'msvs_settings': {
+            'VCLinkerTool': {
+              'AdditionalOptions': [
+                '/ignore:4099', # Ignore missing PDBs in CI builds.
+              ],
+            },
+          },
+        }]
       ],
     }],
   ],
