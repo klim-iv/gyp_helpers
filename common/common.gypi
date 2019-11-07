@@ -92,6 +92,7 @@
     'submodules_loc%': '<(submodules_loc)',
     'private_loc%': '<(private_loc)',
     'third_party_loc%': '<(third_party_loc)',
+    'build_defines%': '',
 
     # GYP does not support per-configuration libraries :(
     # So they will be emulated through additional link flags,
