@@ -23,8 +23,9 @@
           '-Wno-missing-field-initializers',
           '-Wno-sign-compare',
           '-Wno-attributes',
+          '-Wno-parentheses', # happens in foreign headers
+          '-Wno-stringop-overflow', # false positives
           '-Wno-error=class-memaccess',
-          '-Wno-error=parentheses',
         ],
         'linux_path_ffmpeg%': '/usr/local',
         'linux_path_openal%': '/usr/local',
