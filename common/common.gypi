@@ -35,12 +35,13 @@
               'build_linux': 0,
             }],
           ],
+          'special_build_target%': '',
         },
         'build_os%': '<(build_os)',
         'build_win%': '<(build_win)',
         'build_mac%': '<(build_mac)',
         'build_linux%': '<(build_linux)',
-        'special_build_target%': '',
+        'special_build_target%': '<(special_build_target)',
 
         'conditions': [[ '"<(special_build_target)" == "osx"', {
           'build_macold': 0,
