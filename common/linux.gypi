@@ -32,7 +32,6 @@
         'linux_path_va%': '/usr/local',
         'linux_path_vdpau%': '/usr/local',
         'linux_path_breakpad%': '/usr/local',
-        'linux_path_opus_include%': '<(libs_loc)/opus/include',
         'linux_path_range%': '/usr/local',
       },
       'include_dirs': [
@@ -40,7 +39,6 @@
         '<(linux_path_ffmpeg)/include',
         '<(linux_path_openal)/include',
         '<(linux_path_breakpad)/include/breakpad',
-        '<(linux_path_opus_include)',
         '<(linux_path_range)/include',
       ],
       'library_dirs': [
