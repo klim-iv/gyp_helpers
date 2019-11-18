@@ -68,7 +68,7 @@
               'sources': [ '__Wrong_Special_Build_Target_<(special_build_target)_' ],
             }],
           ],
-        }], [ '"<!(uname -p)" == "x86_64"', {
+        }], [ '"<!(uname -m)" == "x86_64"', {
           # 32 bit version can't be linked with debug info or LTO,
           # virtual memory exhausted :(
           'cflags_c': [ '-g' ],
