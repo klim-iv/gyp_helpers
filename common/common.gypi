@@ -135,6 +135,7 @@
   },
 
   'defines': [
+    'ENC_PREFIX="!!!:"',
     'NOMINMAX'
   ],
   'configurations': {
